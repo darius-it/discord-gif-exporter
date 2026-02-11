@@ -10,6 +10,7 @@ Small utility to export Discord favorite GIFs from the Browser (using a Tampermo
 
 <br>
 Enjoy! From this point on, you can use the JSON file to download the GIFs for archival purposes.
+For example, you can use the `gif_scraper.py` script in the scripts folder.
 
 ## Credits
 Logic for extracting the GIFs is from this GitHub Gist by Davr1: https://gist.github.com/Davr1/af6a5806a3bf4b5b7dc18829029b42c2, I adapted it into a Tampermonkey Userscript for convenience purposes.
