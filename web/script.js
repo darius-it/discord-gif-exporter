@@ -18,7 +18,7 @@ async function downloadExportedGifs() {
         const element = gifList[gifNum];
 
         try {
-            const fetchedFileResult = await fetch(element.src);
+            const fetchedFileResult = await fetch(element.src); // TODO: strip discord external paths and fetch the original link
             await downloadFile(folderHandle, element.originalReference.split("/").at(-1), fetchedFileResult);
         }
         catch(err) {
