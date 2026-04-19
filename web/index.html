@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple utility to export and download your favorited GIFs from Discord.">
+
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="script.js"></script>
+
+    <title>Discord GIF Exporter</title>
+</head>
+<body>
+    <header>
+        <h1 class="text-accent-lighter">Discord GIF Exporter</h1>
+        <p>Easily export your GIFs from Discord, allowing you to use them in other apps. This is also a useful tool to save your GIFs before the Tenor API shuts down.</p>
+    </header>
+
+    <noscript>
+        To use the download and conversion logic of this site, please enable JavaScript.
+    </noscript>
+
+    <section>
+        <h2>1. Export JSON from Discord</h2>
+        <p>To use this tool, you need a JSON which lists all of your favorited GIFs from Discord. There are multiple ways to export this:</p>
+
+        <details>
+            <summary>Using Tampermonkey script</summary>
+            You can use the <a href="https://github.com/darius-it/discord-gif-exporter">Tampermonkey script</a> which allows you to open Discord in your browser and grab the JSON with one click.
+            If you already have Tampermonkey installed, <a href="">click here</a> to install the userscript.
+        </details>
+        <details>
+            <summary>Manual method</summary>
+            If you don't want to install another browser extension and you know how to use your browser's developer tools, you can use the original snippet that the Tampermonkey extension was derived from:
+            <a href="https://github.com/darius-it/discord-gif-exporter">Exporter by Dav56</a>
+        </details>
+    </section>
+
+    <section>
+        <h2>2. Upload JSON</h2>
+        <p>Use the button below to upload the JSON you have just acquired.</p>
+
+        <input type="file" id="json-export-upload" accept="application/json" />
+    </section>
+
+    <section>
+        <h2>3. Download & Convert</h2>
+        <p>If you have uploaded the JSON above, you are now ready to download all GIFs! By default, the links saved in the JSON point to <code>.mp4</code> files. If you wish to have actual <code>.gif</code> files, you can select the conversion below. This conversion is done locally using a WASM module.</p>
+
+        <input type="checkbox" id="gif-conversion-enabled"> 
+        <label for="gif-conversion-enabled">Enable GIF conversion (loads ~180MB WASM module)</label>
+        <br>
+        <button class="export-button" onclick="downloadExportedGifs()">Download GIFs</button>
+    </section>
+</body>
+</html>

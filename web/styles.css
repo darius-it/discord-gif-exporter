@@ -1,0 +1,68 @@
+:root {
+    --accent: #5961d5;
+    --accent-lighter: #7884fb;
+    --accent-darker: #4549ba;
+
+    --background: #27252c;
+    --background-lighter: #36343f;
+    --background-lighter-2: #484652;
+    --background-darker: #16151b;
+
+    --text: #e8e7ec;
+    --text-darker: #d4d2e1;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: sans-serif;
+    font-size: 100%;
+
+    color-scheme: only dark;
+
+    max-width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+p {
+    color: var(--text-darker);
+    margin-top: 0.5rem;
+}
+
+section {
+    margin-top: 2rem;
+}
+
+details>summary {
+    cursor: pointer;
+}
+
+details:open {
+    margin-bottom: 1rem;
+}
+
+.text-accent-lighter {
+    color: var(--accent-lighter);
+}
+
+.export-button {
+    margin-top: 1.2rem;
+    padding: 0.8em 1.5em;
+
+    font-weight: bold;
+    background-color: var(--accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color ease-in-out 0.2s;
+}
+
+.export-button:hover {
+    background-color: var(--accent-darker);
+}
+
