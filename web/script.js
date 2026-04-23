@@ -58,7 +58,7 @@ function stripDiscordExternalPaths(url) {
  */
 async function getFolderHandle() {
   try {
-    const handle = await window.showDirectoryPicker({
+    const handle = await window.showDirectoryPicker({ // TODO: see if there is any alternative API which also works in Firefox
         mode: "readwrite"
     });
     return handle;
