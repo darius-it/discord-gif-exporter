@@ -43,13 +43,9 @@ function stripDiscordExternalPaths(url) {
     const discordExternalLinkRegex = /https:\/\/images-ext-\d.discordapp.net\/external\/[^/]+\/([^]+)/;
     const matches = url.match(discordExternalLinkRegex);
 
-    console.log(matches.length);
-    console.log(matches);
-
     if (matches.length === 2) {
         const actualUrl = matches[1];
         const actualUrlCorrectHttps = actualUrl.replace("https/", "https://");
-        console.log(actualUrl, actualUrlCorrectHttps);
         return actualUrlCorrectHttps;
     }
 
