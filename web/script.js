@@ -8,18 +8,23 @@ async function downloadExportedGifs() {
     const enableWasmConversion = document.getElementById("gif-conversion-enabled").checked;
 
     const gifList = await getGifsArray(exportJSON);
-
     const folderHandle = await getFolderHandle();
 
-    updateStatus(`Downloaded 0/${gifList.length} files...`)
+    await downloadGifs(gifList, folderHandle);
+}
+
+async function downloadGifs(gifList, folderHandle) {
+    updateStatus(`Downloaded 0/${gifList.length} files...`);
 
     let downloadedGifs = 0;
     for (let gifNum = 0; gifNum < gifList.length; gifNum++) {
         const element = gifList[gifNum];
+        const cleanedElementSrc = stripDiscordExternalPaths(element.src);
+        const fileName = element.originalReference.split("/").at(-1); // TODO: for external links we need to append a file extension
 
         try {
-            const fetchedFileResult = await fetch(element.src); // TODO: strip discord external paths and fetch the original link
-            await downloadFile(folderHandle, element.originalReference.split("/").at(-1), fetchedFileResult);
+            const fetchedFileResult = await fetch(cleanedElementSrc);
+            await downloadFile(folderHandle, fileName, fetchedFileResult);
         }
         catch(err) {
             showMessage(`Error while downloading file, skipping...`, "error")
@@ -32,6 +37,23 @@ async function downloadExportedGifs() {
     
     updateStatus("");
     showMessage("Successfully downloaded your GIFs.");
+}
+
+function stripDiscordExternalPaths(url) {
+    const discordExternalLinkRegex = /https:\/\/images-ext-\d.discordapp.net\/external\/[^/]+\/([^]+)/;
+    const matches = url.match(discordExternalLinkRegex);
+
+    console.log(matches.length);
+    console.log(matches);
+
+    if (matches.length === 2) {
+        const actualUrl = matches[1];
+        const actualUrlCorrectHttps = actualUrl.replace("https/", "https://");
+        console.log(actualUrl, actualUrlCorrectHttps);
+        return actualUrlCorrectHttps;
+    }
+
+    return url;
 }
 
 /**
