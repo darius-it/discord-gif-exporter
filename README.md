@@ -3,7 +3,7 @@ Small utility to export Discord favorite GIFs from the Browser (using a Tampermo
 
 ## How to use:
 1. Install Tampermonkey ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) | [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en))
-2. Open [the script](https://github.com/darius-it/discord-gif-exporter/raw/refs/heads/main/scripts/dsc-gif-exporter-1.0.user.js) and press install
+2. Open [the script](https://github.com/darius-it/discord-gif-exporter/raw/refs/heads/main/scripts/dsc-gif-exporter.user.js) and press install
 3. Access Discord from the browser, go to any chat and open the GIF picker
 4. There should be a button saying "Export GIFs", which will download a JSON file with links to all of your favorited GIFs.
 <img width="638" height="142" alt="image" src="https://github.com/user-attachments/assets/670c2f77-839f-48f0-a34b-20c86526ff2a" />
